@@ -1,6 +1,6 @@
-const int trigPin = A;
-const int echoPin = B;
-long duration
+const int trigPin = 11;
+const int echoPin = 12;
+long duration;
 int distanceCm, distanceInch;
 
 
@@ -13,10 +13,20 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digital.Write(trigPin, LOW);
+  digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-  digital.Write(trigPin, HIGH);
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(10); 
-  digital.Write(trigPin, LOW);
-  duration = pulseIn(echoPin HIGH);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+
+  distanceCm = duration * 1/58;
+  distanceInch = duration * 1/148;
+  Serial.print("Distance: ");
+  Serial.print(distanceCm);
+  Serial.print(" cm/ ");
+  Serial.print("Distance: ");
+  Serial.print(distanceInch);
+  Serial.println(" in");
+  delay(1000);
 }
