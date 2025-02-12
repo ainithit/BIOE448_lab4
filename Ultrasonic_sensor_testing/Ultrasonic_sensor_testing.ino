@@ -13,5 +13,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  digital.Write(trigPin, LOW);
+  delayMicroseconds(2);
+  digital.Write(trigPin, HIGH);
+  delayMicroseconds(10); 
+  digital.Write(trigPin, LOW);
+  duration = pulseIn(echoPin HIGH);
 }
